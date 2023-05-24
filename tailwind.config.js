@@ -13,9 +13,12 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                ubuntu: ['Ubuntu', 'sans-serif'],
             },
         },
     },
 
     plugins: [forms],
 };
+
+//npx tailwindcss build -i resources/css/app.css -o public/build/assets/app-49a0a1d1.css
