@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/', 'welcome')->name('home');
-    Route::view('/home', 'home')->name('home');
     Route::view('/test', 'test')->name('test');
 });
+
+
+Route::view('/home', 'home')->name('home');
+Route::get('/board/{board}', [BoardController::class, 'show'])->name('board');
+
 
 // /profile: This route is accessed with the HTTP GET method and is handled by the edit method of the ProfileController. It is named as profile.edit.
 // /profile: This route is accessed with the HTTP PATCH method and is handled by the update method of the ProfileController. It is named as profile.update.
