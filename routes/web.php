@@ -16,12 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/', 'welcome')->name('home');
     Route::view('/test', 'test')->name('test');
 });
 
 
-Route::view('/home', 'home')->name('home');
+Route::view('/', 'home')->name('home');
 Route::get('/board/{board}', [BoardController::class, 'show'])->name('board');
 
 

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Board;  // Replace this with your actual Board model namespace
 use Illuminate\Http\Request;
+use App\Models\Board;
 
 class BoardController extends Controller
 {
@@ -15,12 +15,12 @@ class BoardController extends Controller
      */
     public function show($slug)
     {
+
         $board = Board::where('slug', $slug)->first();
-
         if (!$board) {
-            abort(404);
+            return abort(404);
+            // return response()->view('errors::404', [], 404);
         }
-
         return view('board', ['board' => $board]);
     }
 }

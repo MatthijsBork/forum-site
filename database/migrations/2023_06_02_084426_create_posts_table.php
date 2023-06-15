@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('title');
+            $table->text('content');
+            // Other columns specific to the posts table
             $table->timestamps();
+
+            // Foreign key constraint
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

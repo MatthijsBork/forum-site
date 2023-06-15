@@ -5,9 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a class="text-xl text-white body-font font-ubuntu" href="{{ route('home') }}">
-                        ¡Forum
-                    </a>
+                    <x-application-logo class="text-xl" />
                 </div>
 
                 <!-- Navigation Links -->

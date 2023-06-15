@@ -3,17 +3,17 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Board;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class BoardList extends Component
 {
-    /**
-     * Create a new component instance.
-     */
+    public $boards;
+
     public function __construct()
     {
-        //
+        $this->boards = Board::all();
     }
 
     /**
