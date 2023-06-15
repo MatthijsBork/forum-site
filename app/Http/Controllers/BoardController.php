@@ -16,10 +16,9 @@ class BoardController extends Controller
     public function show($slug)
     {
 
-        $board = Board::where('slug', $slug)->first();
+        $board = Board::where('slug', $slug)->with('posts.user')->first();
         if (!$board) {
             return abort(404);
-            // return response()->view('errors::404', [], 404);
         }
         return view('board', ['board' => $board]);
     }

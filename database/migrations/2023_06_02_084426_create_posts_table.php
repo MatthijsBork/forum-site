@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('board_id');
             $table->string('title');
             $table->text('content');
             // Other columns specific to the posts table
@@ -23,6 +24,11 @@ return new class extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('board_id')
+                ->references('id')
+                ->on('boards')
                 ->onDelete('cascade');
         });
     }

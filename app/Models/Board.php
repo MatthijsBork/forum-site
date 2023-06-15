@@ -17,6 +17,12 @@ class Board extends Model
     protected $fillable = [
         'name',
         'slug',
+        'description',
+        'nsfw'
     ];
+
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
 
 }
