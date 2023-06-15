@@ -11,22 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('board_id');
+            $table->string('title');
+            $table->text('content');
+            // Other columns specific to the posts table
+            $table->timestamps();
 
+            // Foreign key constraint
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->foreign('post_id')
+            $table->foreign('board_id')
                 ->references('id')
-                ->on('posts')
+                ->on('boards')
                 ->onDelete('cascade');
-
-            $table->timestamps();
         });
     }
 
@@ -35,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('posts');
     }
 };
